@@ -1,9 +1,9 @@
 <?php
 
-namespace HafizHfadh\LaravelSimpleDatatable\Pipelines;
+namespace HafizhFadh\LaravelSimpleDatatable\Pipelines;
 
-use HafizHfadh\LaravelSimpleDatatable\Contracts\Context;
-use HafizHfadh\LaravelSimpleDatatable\Contracts\Stage;
+use HafizhFadh\LaravelSimpleDatatable\Contracts\Context;
+use HafizhFadh\LaravelSimpleDatatable\Contracts\Stage;
 use Illuminate\Pipeline\Pipeline;
 
 class DatatablePipeline

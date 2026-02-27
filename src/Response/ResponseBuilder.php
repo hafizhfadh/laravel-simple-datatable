@@ -1,6 +1,6 @@
 <?php
 
-namespace HafizHfadh\LaravelSimpleDatatable\Response;
+namespace HafizhFadh\LaravelSimpleDatatable\Response;
 
 use Illuminate\Http\JsonResponse;
 

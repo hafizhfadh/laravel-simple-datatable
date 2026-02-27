@@ -1,8 +1,8 @@
 <?php
 
-namespace HafizHfadh\LaravelSimpleDatatable\Tests;
+namespace HafizhFadh\LaravelSimpleDatatable\Tests;
 
-use HafizHfadh\LaravelSimpleDatatable\LaravelSimpleDatatableServiceProvider;
+use HafizhFadh\LaravelSimpleDatatable\LaravelSimpleDatatableServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra

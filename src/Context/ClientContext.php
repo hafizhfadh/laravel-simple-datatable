@@ -1,8 +1,8 @@
 <?php
 
-namespace HafizHfadh\LaravelSimpleDatatable\Context;
+namespace HafizhFadh\LaravelSimpleDatatable\Context;
 
-use HafizHfadh\LaravelSimpleDatatable\Contracts\Context;
+use HafizhFadh\LaravelSimpleDatatable\Contracts\Context;
 use Illuminate\Support\Collection;
 
 class ClientContext implements Context

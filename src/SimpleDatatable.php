@@ -1,15 +1,15 @@
 <?php
 
-namespace HafizHfadh\LaravelSimpleDatatable;
+namespace HafizhFadh\LaravelSimpleDatatable;
 
-use HafizHfadh\LaravelSimpleDatatable\Context\ClientContext;
-use HafizHfadh\LaravelSimpleDatatable\Context\ServerContext;
-use HafizHfadh\LaravelSimpleDatatable\Contracts\Context;
-use HafizHfadh\LaravelSimpleDatatable\Pipelines\DatatablePipeline;
-use HafizHfadh\LaravelSimpleDatatable\Response\ResponseBuilder;
-use HafizHfadh\LaravelSimpleDatatable\Stages\PaginateStage;
-use HafizHfadh\LaravelSimpleDatatable\Stages\SearchStage;
-use HafizHfadh\LaravelSimpleDatatable\Stages\SortStage;
+use HafizhFadh\LaravelSimpleDatatable\Context\ClientContext;
+use HafizhFadh\LaravelSimpleDatatable\Context\ServerContext;
+use HafizhFadh\LaravelSimpleDatatable\Contracts\Context;
+use HafizhFadh\LaravelSimpleDatatable\Pipelines\DatatablePipeline;
+use HafizhFadh\LaravelSimpleDatatable\Response\ResponseBuilder;
+use HafizhFadh\LaravelSimpleDatatable\Stages\PaginateStage;
+use HafizhFadh\LaravelSimpleDatatable\Stages\SearchStage;
+use HafizhFadh\LaravelSimpleDatatable\Stages\SortStage;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

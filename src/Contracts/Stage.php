@@ -1,6 +1,6 @@
 <?php
 
-namespace HafizHfadh\LaravelSimpleDatatable\Contracts;
+namespace HafizhFadh\LaravelSimpleDatatable\Contracts;
 
 use Closure;
 

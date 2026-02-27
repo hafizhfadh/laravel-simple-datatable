@@ -1,6 +1,6 @@
 <?php
 
-namespace HafizHfadh\LaravelSimpleDatatable;
+namespace HafizhFadh\LaravelSimpleDatatable;
 
 use Illuminate\Support\ServiceProvider;
 

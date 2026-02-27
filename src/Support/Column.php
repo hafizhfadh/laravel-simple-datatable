@@ -1,6 +1,6 @@
 <?php
 
-namespace HafizHfadh\LaravelSimpleDatatable\Support;
+namespace HafizhFadh\LaravelSimpleDatatable\Support;
 
 class Column
 {

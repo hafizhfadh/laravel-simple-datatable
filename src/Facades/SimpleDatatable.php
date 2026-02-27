@@ -1,13 +1,13 @@
 <?php
 
-namespace HafizHfadh\LaravelSimpleDatatable\Facades;
+namespace HafizhFadh\LaravelSimpleDatatable\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static \HafizHfadh\LaravelSimpleDatatable\SimpleDatatable make(mixed $source)
+ * @method static \HafizhFadh\LaravelSimpleDatatable\SimpleDatatable make(mixed $source)
  *
- * @see \HafizHfadh\LaravelSimpleDatatable\SimpleDatatableFactory
+ * @see \HafizhFadh\LaravelSimpleDatatable\SimpleDatatableFactory
  */
 class SimpleDatatable extends Facade
 {

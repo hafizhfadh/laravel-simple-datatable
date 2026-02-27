@@ -1,7 +1,7 @@
 <?php
 
-use HafizHfadh\LaravelSimpleDatatable\SimpleDatatable;
-use HafizHfadh\LaravelSimpleDatatable\Support\Column;
+use HafizhFadh\LaravelSimpleDatatable\SimpleDatatable;
+use HafizhFadh\LaravelSimpleDatatable\Support\Column;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

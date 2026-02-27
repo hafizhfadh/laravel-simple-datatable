@@ -28,12 +28,12 @@
     },
     "autoload": {
         "psr-4": {
-            "HafizHfadh\\LaravelSimpleDatatable\\": "src"
+            "HafizhFadh\\LaravelSimpleDatatable\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "HafizHfadh\\LaravelSimpleDatatable\\Tests\\": "tests"
+            "HafizhFadh\\LaravelSimpleDatatable\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -49,10 +49,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "HafizHfadh\\LaravelSimpleDatatable\\LaravelSimpleDatatableServiceProvider"
+                "HafizhFadh\\LaravelSimpleDatatable\\LaravelSimpleDatatableServiceProvider"
             ],
             "aliases": {
-                "SimpleDatatable": "HafizHfadh\\LaravelSimpleDatatable\\Facades\\SimpleDatatable"
+                "SimpleDatatable": "HafizhFadh\\LaravelSimpleDatatable\\Facades\\SimpleDatatable"
             }
         }
     },

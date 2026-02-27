@@ -1,5 +1,5 @@
 <?php
 
-use HafizHfadh\LaravelSimpleDatatable\Tests\TestCase;
+use HafizhFadh\LaravelSimpleDatatable\Tests\TestCase;
 
 uses(TestCase::class)->in(__DIR__);

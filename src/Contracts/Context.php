@@ -1,6 +1,6 @@
 <?php
 
-namespace HafizHfadh\LaravelSimpleDatatable\Contracts;
+namespace HafizhFadh\LaravelSimpleDatatable\Contracts;
 
 interface Context
 {
@@ -8,7 +8,7 @@ interface Context
      * Apply search logic.
      *
      * @param string $term
-     * @param array<int, \HafizHfadh\LaravelSimpleDatatable\Support\Column> $columns
+     * @param array<int, \HafizhFadh\LaravelSimpleDatatable\Support\Column> $columns
      * @return self
      */
     public function search(string $term, array $columns): self;
