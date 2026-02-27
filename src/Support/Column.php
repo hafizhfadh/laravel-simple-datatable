@@ -21,12 +21,14 @@ class Column
     public function searchable(bool $condition = true): self
     {
         $this->isSearchable = $condition;
+
         return $this;
     }
 
     public function sortable(bool $condition = true): self
     {
         $this->isSortable = $condition;
+
         return $this;
     }
 }

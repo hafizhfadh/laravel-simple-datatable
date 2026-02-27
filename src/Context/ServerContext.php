@@ -4,7 +4,6 @@ namespace HafizHfadh\LaravelSimpleDatatable\Context;
 
 use HafizHfadh\LaravelSimpleDatatable\Contracts\Context;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Str;
 
 class ServerContext implements Context
 {
@@ -34,7 +33,7 @@ class ServerContext implements Context
 
     public function sort(string $column, string $direction): self
     {
-        if (!in_array(strtolower($direction), ['asc', 'desc'])) {
+        if (! in_array(strtolower($direction), ['asc', 'desc'])) {
             return $this;
         }
 

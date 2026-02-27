@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class User extends Model {
+class User extends Model
+{
     protected $guarded = [];
 }
 
@@ -27,7 +28,7 @@ it('can handle client mode with collection', function () {
 
     $response = SimpleDatatable::make($data)
         ->columns([
-            Column::make('name')->searchable()->sortable()
+            Column::make('name')->searchable()->sortable(),
         ])
         ->process();
 
@@ -47,7 +48,7 @@ it('can search in client mode', function () {
 
     $response = SimpleDatatable::make($data)
         ->columns([
-            Column::make('name')->searchable()
+            Column::make('name')->searchable(),
         ])
         ->process();
 
@@ -66,7 +67,7 @@ it('can sort in client mode', function () {
 
     $response = SimpleDatatable::make($data)
         ->columns([
-            Column::make('name')->sortable()
+            Column::make('name')->sortable(),
         ])
         ->process();
 
@@ -83,7 +84,7 @@ it('can handle server mode with builder', function () {
 
     $response = SimpleDatatable::make($query)
         ->columns([
-            Column::make('name')->searchable()->sortable()
+            Column::make('name')->searchable()->sortable(),
         ])
         ->process();
 
@@ -102,7 +103,7 @@ it('can search in server mode', function () {
 
     $response = SimpleDatatable::make(User::query())
         ->columns([
-            Column::make('name')->searchable()
+            Column::make('name')->searchable(),
         ])
         ->process();
 
@@ -120,7 +121,7 @@ it('can paginate in server mode', function () {
 
     $response = SimpleDatatable::make(User::query())
         ->columns([
-            Column::make('name')
+            Column::make('name'),
         ])
         ->process();
 

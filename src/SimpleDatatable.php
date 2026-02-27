@@ -37,24 +37,28 @@ class SimpleDatatable
     public function columns(array $columns): self
     {
         $this->columns = $columns;
+
         return $this;
     }
 
     public function request(Request $request): self
     {
         $this->request = $request;
+
         return $this;
     }
 
     public function serverSide(): self
     {
         $this->mode = 'server';
+
         return $this;
     }
 
     public function clientSide(): self
     {
         $this->mode = 'client';
+
         return $this;
     }
 
@@ -107,7 +111,7 @@ class SimpleDatatable
         // 3. Paginate (Final Stage)
         $perPage = (int) $this->request->get('per_page', 10);
         $page = (int) $this->request->get('page', 1);
-        
+
         // Ensure perPage is positive
         if ($perPage <= 0) {
             $perPage = 10;

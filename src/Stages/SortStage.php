@@ -5,7 +5,6 @@ namespace HafizHfadh\LaravelSimpleDatatable\Stages;
 use Closure;
 use HafizHfadh\LaravelSimpleDatatable\Contracts\Context;
 use HafizHfadh\LaravelSimpleDatatable\Contracts\Stage;
-use Illuminate\Support\Str;
 
 class SortStage implements Stage
 {
@@ -27,7 +26,7 @@ class SortStage implements Stage
         }
 
         // Validate sort direction
-        if (!in_array($this->direction, ['asc', 'desc'])) {
+        if (! in_array($this->direction, ['asc', 'desc'])) {
             $this->direction = 'asc';
         }
 
@@ -36,6 +35,7 @@ class SortStage implements Stage
         foreach ($this->columns as $col) {
             if ($col->name === $this->column) {
                 $columnDef = $col;
+
                 break;
             }
         }

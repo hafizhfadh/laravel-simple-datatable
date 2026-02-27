@@ -19,6 +19,7 @@ class DatatablePipeline
     public function addStage(Stage $stage): self
     {
         $this->stages[] = $stage;
+
         return $this;
     }
 

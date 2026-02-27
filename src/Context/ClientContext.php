@@ -29,6 +29,7 @@ class ClientContext implements Context
                     }
                 }
             }
+
             return false;
         });
 
@@ -37,7 +38,7 @@ class ClientContext implements Context
 
     public function sort(string $column, string $direction): self
     {
-        if (!in_array(strtolower($direction), ['asc', 'desc'])) {
+        if (! in_array(strtolower($direction), ['asc', 'desc'])) {
             return $this;
         }
 

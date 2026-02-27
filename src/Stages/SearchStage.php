@@ -19,9 +19,9 @@ class SearchStage implements Stage
 
     public function handle(Context $context, Closure $next): mixed
     {
-        if (!empty($this->term)) {
-            $searchableColumns = array_filter($this->columns, fn($column) => $column->isSearchable);
-            if (!empty($searchableColumns)) {
+        if (! empty($this->term)) {
+            $searchableColumns = array_filter($this->columns, fn ($column) => $column->isSearchable);
+            if (! empty($searchableColumns)) {
                 $context->search($this->term, $searchableColumns);
             }
         }
