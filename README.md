@@ -1,66 +1,162 @@
-# :package_description
+# Laravel Simple Datatable
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
-[![Tests](https://img.shields.io/github/actions/workflow/status/:vendor_slug/:package_slug/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/:vendor_slug/:package_slug/actions/workflows/run-tests.yml)
-[![Total Downloads](https://img.shields.io/packagist/dt/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
-<!--delete-->
----
-This package can be used as to scaffold a framework agnostic package. Follow these steps to get started:
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/hafizhfadh/laravel-simple-datatable.svg?style=flat-square)](https://packagist.org/packages/hafizhfadh/laravel-simple-datatable)
+[![Tests](https://img.shields.io/github/actions/workflow/status/hafizhfadh/laravel-simple-datatable/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/hafizhfadh/laravel-simple-datatable/actions/workflows/run-tests.yml)
+[![Total Downloads](https://img.shields.io/packagist/dt/hafizhfadh/laravel-simple-datatable.svg?style=flat-square)](https://packagist.org/packages/hafizhfadh/laravel-simple-datatable)
 
-1. Press the "Use template" button at the top of this repo to create a new repo with the contents of this skeleton
-2. Run "php ./configure.php" to run a script that will replace all placeholders throughout all the files
-3. Have fun creating your package.
-4. If you need help creating a package, consider picking up our <a href="https://laravelpackage.training">Laravel Package Training</a> video course.
----
-<!--/delete-->
-This is where your description should go. Try and limit it to a paragraph or two. Consider adding a small example.
+**Laravel Simple Datatable** is a lightweight, framework-native engine designed to bridge Laravel with [simple-datatables](https://github.com/fiduswriter/Simple-DataTables) (and similar frontend libraries). It provides a fluent, secure, and pipeline-driven approach to handling server-side and client-side data processing without the bloat of jQuery or heavy dependencies.
 
-## Support us
+Built with **TailwindCSS v4** compatibility in mind and engineered for **Laravel 11.x & 12.x**, this package offers enterprise-grade performance with a developer-friendly API.
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/:package_name.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/:package_name)
+## 🚀 Key Features
 
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
+-   **Dual Processing Modes**: Seamlessly switch between **Server-side** (Eloquent Builder) and **Client-side** (Collection) modes.
+-   **Pipeline-Driven Architecture**: Modular execution flow using Laravel's pipeline pattern for Search, Sort, and Pagination stages.
+-   **Secure by Default**: Explicit column whitelisting, strict sort direction validation, and parameterized queries to prevent SQL injection.
+-   **Fluent API**: Define columns and configuration using a clean, chainable syntax.
+-   **No Frontend Dependencies**: Pure PHP backend logic that outputs standard JSON, giving you complete freedom over your frontend stack.
+-   **PHP 8.3+ & Strict Typing**: Leveraging the latest PHP features for reliability and performance.
 
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
-
-## Installation
+## 📦 Installation
 
 You can install the package via composer:
 
 ```bash
-composer require :vendor_slug/:package_slug
+composer require hafizhfadh/laravel-simple-datatable
 ```
 
-## Usage
+## 🔧 Usage
+
+### 1. Basic Setup
+
+The simplest way to use the datatable is by passing an Eloquent query or a Collection to the `make` method.
+
+#### Server-Side (Recommended for Large Datasets)
 
 ```php
-$skeleton = new VendorName\Skeleton();
-echo $skeleton->echoPhrase('Hello, VendorName!');
+use HafizhFadh\LaravelSimpleDatatable\Facades\SimpleDatatable;
+use HafizhFadh\LaravelSimpleDatatable\Support\Column;
+use App\Models\User;
+
+public function index()
+{
+    // Automatically detects Builder and enables Server Mode
+    return SimpleDatatable::make(User::query())
+        ->columns([
+            Column::make('name')->searchable()->sortable(),
+            Column::make('email')->searchable(),
+            Column::make('created_at')->sortable(),
+        ])
+        ->process();
+}
 ```
 
-## Testing
+#### Client-Side (Fallback for Small Datasets)
+
+```php
+use HafizhFadh\LaravelSimpleDatatable\Facades\SimpleDatatable;
+use HafizhFadh\LaravelSimpleDatatable\Support\Column;
+
+public function index()
+{
+    $users = User::all(); // Returns a Collection
+
+    // Automatically detects Collection and enables Client Mode
+    return SimpleDatatable::make($users)
+        ->columns([
+            Column::make('name')->searchable()->sortable(),
+            Column::make('email')->searchable(),
+        ])
+        ->process();
+}
+```
+
+### 2. Column Configuration
+
+Columns must be explicitly defined to enable interaction. This is a security feature to prevent arbitrary sorting or searching on sensitive fields.
+
+```php
+Column::make('username')
+    ->searchable() // Allows filtering by this column
+    ->sortable();  // Allows sorting by this column
+```
+
+### 3. Frontend Integration
+
+This package outputs a JSON response compatible with most datatable libraries. Here is an example response structure:
+
+**Server Mode Response:**
+```json
+{
+    "data": [...],
+    "meta": {
+        "current_page": 1,
+        "per_page": 10,
+        "last_page": 5,
+        "total": 42
+    }
+}
+```
+
+**Client Mode Response:**
+```json
+{
+    "data": [...],
+    "meta": {
+        "mode": "client",
+        "total": 42
+    }
+}
+```
+
+## ⚙️ Advanced Configuration
+
+### Manual Mode Selection
+
+You can force a specific mode if needed:
+
+```php
+SimpleDatatable::make(User::query())
+    ->clientSide() // Force fetching all data and processing in memory
+    ->process();
+```
+
+### Request Injection
+
+By default, the engine uses the current global request. You can inject a custom request instance:
+
+```php
+SimpleDatatable::make($query)
+    ->request($customRequest)
+    ->process();
+```
+
+## 🧪 Testing
+
+We use **Pest** for testing. To run the test suite:
 
 ```bash
 composer test
 ```
 
-## Changelog
+## 🤝 Contributing
 
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
-## Contributing
+1.  Fork the repository.
+2.  Create a new feature branch.
+3.  Commit your changes.
+4.  Push to the branch.
+5.  Open a Pull Request.
 
-Please see [CONTRIBUTING](https://github.com/spatie/.github/blob/main/CONTRIBUTING.md) for details.
+## 🔒 Security
 
-## Security Vulnerabilities
+If you discover any security related issues, please email info@hafizhfadh.id instead of using the issue tracker.
 
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
-
-## Credits
-
-- [:author_name](https://github.com/:author_username)
-- [All Contributors](../../contributors)
-
-## License
+## 📄 License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+---
+
+**HafizhFadh/LaravelSimpleDatatable** — Simple, Secure, Scalable.
