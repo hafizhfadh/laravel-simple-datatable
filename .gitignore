@@ -30,3 +30,4 @@ phpstan.neon
 psalm.xml
 testbench.yaml
 /coverage
+release.log
