@@ -1,0 +1,7 @@
+services:
+  app:
+    image: laravelsail/php83-composer:latest
+    volumes:
+      - .:/var/www/html
+    working_dir: /var/www/html
+    command: tail -f /dev/null

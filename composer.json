@@ -1,46 +1,59 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "hafizhfadh/laravel-simple-datatable",
+    "description": "A Laravel-native datatable engine providing both server-side and client-side processing modes.",
     "keywords": [
-        ":vendor_name",
-        ":package_slug"
+        "laravel",
+        "datatable",
+        "simple-datatables",
+        "tailwindcss"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/hafizhfadh/laravel-simple-datatable",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Hafizh Fadhlurrohman",
+            "email": "info@hafizhfadh.id",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^8.4"
+        "php": "^8.3",
+        "illuminate/support": "^11.0|^12.0",
+        "illuminate/database": "^11.0|^12.0"
     },
     "require-dev": {
-        :require_dev_testing,
-        :require_dev_codestyle,
-        "spatie/ray": "^1.28"
+        "orchestra/testbench": "^9.0|^10.0",
+        "pestphp/pest": "^3.0",
+        "pestphp/pest-plugin-laravel": "^3.0"
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src"
+            "HafizHfadh\\LaravelSimpleDatatable\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "HafizHfadh\\LaravelSimpleDatatable\\Tests\\": "tests"
         }
     },
     "scripts": {
-        :scripts_testing,
-        :scripts_codestyle
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage"
     },
     "config": {
         "sort-packages": true,
         "allow-plugins": {
-            :plugins_testing,
-            "phpstan/extension-installer": true
+            "pestphp/pest-plugin": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "HafizHfadh\\LaravelSimpleDatatable\\LaravelSimpleDatatableServiceProvider"
+            ],
+            "aliases": {
+                "SimpleDatatable": "HafizHfadh\\LaravelSimpleDatatable\\Facades\\SimpleDatatable"
+            }
         }
     },
     "minimum-stability": "dev",
