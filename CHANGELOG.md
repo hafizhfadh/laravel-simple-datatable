@@ -2,6 +2,11 @@
 
 All notable changes to `laravel-simple-datatable` will be documented in this file.
 
+## v1.0.1 - 2026-02-27
+
+### Changed
+- Maintenance release.
+
 ## v1.0.0 - 2026-02-27
 
 ### Added
