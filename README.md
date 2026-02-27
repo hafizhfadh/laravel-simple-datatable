@@ -109,6 +109,10 @@ This package outputs a JSON response compatible with most datatable libraries. H
 }
 ```
 
+## 🎨 Frontend Integration
+
+For a comprehensive guide on integrating this package with **simple-datatables** and styling it with **TailwindCSS v4**, please refer to our [Frontend Integration Guide](docs/frontend-integration.md).
+
 ## ⚙️ Advanced Configuration
 
 ### Manual Mode Selection
