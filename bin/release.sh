@@ -59,12 +59,26 @@ trap 'handle_error $LINENO' ERR
 # Check for required commands
 check_requirements() {
     log INFO "Checking system requirements..."
-    for cmd in git composer php; do
-        if ! command -v $cmd &> /dev/null; then
-            log ERROR "$cmd is not installed or not in PATH."
-            exit 1
-        fi
-    done
+    
+    # Check for git
+    if ! command -v git &> /dev/null; then
+        log ERROR "git is not installed or not in PATH."
+        exit 1
+    fi
+
+    # Check for docker compose
+    if command -v docker &> /dev/null && docker compose version &> /dev/null; then
+        log INFO "Docker Compose detected."
+    else
+        # Fallback check for local php/composer if docker is not present
+        for cmd in composer php; do
+            if ! command -v $cmd &> /dev/null; then
+                log ERROR "$cmd is not installed or not in PATH (and Docker Compose not found)."
+                exit 1
+            fi
+        done
+    fi
+    
     log SUCCESS "All requirements met."
 }
 
