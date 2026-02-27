@@ -5,7 +5,6 @@ namespace HafizhFadh\LaravelSimpleDatatable\Stages;
 use Closure;
 use HafizhFadh\LaravelSimpleDatatable\Contracts\Context;
 use HafizhFadh\LaravelSimpleDatatable\Contracts\Stage;
-use Illuminate\Support\Str;
 
 class SortStage implements Stage
 {
